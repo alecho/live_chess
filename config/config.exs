@@ -15,7 +15,10 @@ config :live_chess, LiveChessWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "wTDOs0dRqa7O/FkCbxtNLLOnT81QysZ2Gj4y0kRu4phx/A+HsDnSH0Xr0pFM6Gb8",
   render_errors: [view: LiveChessWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: LiveChess.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: LiveChess.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [
+    signing_salt: "7/Mu2AoNY4Lhj8OZFBW1Qslfzw2LI29W"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,

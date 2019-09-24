@@ -1,6 +1,8 @@
 defmodule LiveChessWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :live_chess
 
+  socket "/live", Phoenix.LiveView.Socket
+
   socket "/socket", LiveChessWeb.UserSocket,
     websocket: true,
     longpoll: false
