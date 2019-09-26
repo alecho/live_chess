@@ -1,3 +1,121 @@
 /* This file is for your main application css. */
 
 @import "./phoenix.css";
+
+rect.square-dark {
+  fill: #ce8919;
+}
+
+rect.square-light {
+  fill: #fce4b2;
+}
+
+rect.square-selected {
+  fill: #8eca8e;
+}
+
+.piece {
+  height: 12.5%;
+  width: 12.5%;
+  background-size: cover;
+  position: absolute;
+  transition: top ease-in-out 500ms, left ease-in-out 500ms;
+}
+
+.piece-king-white {
+  background-image: url("/images/pieces/klt45.svg")
+}
+
+.piece-king-black {
+  background-image: url("/images/pieces/kdt45.svg")
+}
+
+.piece-queen-white {
+  background-image: url("/images/pieces/qlt45.svg")
+}
+
+.piece-queen-black {
+  background-image: url("/images/pieces/qdt45.svg")
+}
+
+.piece-rook-white {
+  background-image: url("/images/pieces/rlt45.svg")
+}
+
+.piece-rook-black {
+  background-image: url("/images/pieces/rdt45.svg")
+}
+
+.piece-knight-white {
+  background-image: url("/images/pieces/nlt45.svg")
+}
+
+.piece-knight-black {
+  background-image: url("/images/pieces/ndt45.svg")
+}
+
+.piece-bishop-white {
+  background-image: url("/images/pieces/blt45.svg")
+}
+
+.piece-bishop-black {
+  background-image: url("/images/pieces/bdt45.svg")
+}
+
+.piece-pawn-white {
+  background-image: url("/images/pieces/plt45.svg")
+}
+
+.piece-pawn-black {
+  background-image: url("/images/pieces/pdt45.svg")
+}
+
+.piece-rank-1 {
+  top:87.5%;
+}
+.piece-rank-2 {
+  top:75%;
+}
+.piece-rank-3 {
+  top:62.5%;
+}
+.piece-rank-4 {
+  top:50%;
+}
+.piece-rank-5 {
+  top:37.5%;
+}
+.piece-rank-6 {
+  top:25%;
+}
+.piece-rank-7 {
+  top:12.5%;
+}
+.piece-rank-8 {
+  top: 0;
+}
+
+.piece-file-a {
+  left: 0;
+}
+.piece-file-b {
+  left:12.5%;
+}
+.piece-file-c {
+  left:25%;
+}
+.piece-file-d {
+  left:37.5%;
+}
+.piece-file-e {
+  left:50%;
+}
+.piece-file-f {
+  left:62.5%;
+}
+.piece-file-g {
+  left:75%;
+}
+.piece-file-h {
+  left:87.5%;
+}
