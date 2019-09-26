@@ -1,0 +1,37 @@
+<h1
+
+  draggable="true"
+  ondragstart="console.log(event)"
+  >Chess</h1>
+
+<div style="position:relative;height:0;width:100%;padding-bottom:100%;">
+  <svg width="100%" height="100%">
+    <g shape-rendering="crispEdges">
+    <%= for r <- 8..1 do %>
+      <%= for f <- Chex.Board.files() do %>
+        <rect
+          x="<%= 12.5 * Chex.Board.file_index(f) %>%"
+          y="<%= 12.5 * (8 - r) %>%"
+          width="12.5%"
+          height="12.5%"
+          class="square-<%= Chex.Square.color({f, r}) %> <%= if assigns[:selected_square] == "#{f}#{r}", do: "square-selected"%>"
+          phx-click="square-clicked"
+          phx-value-name="<%= "#{f}#{r}" %>"
+          ></rect>
+      <% end %>
+    <% end %>
+    </g>
+    <div id="pieces-container" phx-update="replace">
+      <%= for {id, {name, color, {file, rank}}} <- assigns[:pieces] do %>
+    <div
+      class="piece piece-<%= "#{name}-#{color}" %> piece-file-<%= file %> piece-rank-<%= rank %>"
+      draggable="true"
+      ondragstart="console.log(event)"
+      phx-click="square-clicked"
+      phx-value-name="<%= "#{file}#{rank}" %>"
+      id="<%= id %>"
+      ></div>
+    <% end %>
+  </div>
+  </svg>
+</div>
