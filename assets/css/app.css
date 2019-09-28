@@ -2,16 +2,22 @@
 
 @import "./phoenix.css";
 
-rect.square-dark {
-  fill: #ce8919;
+.square {
+  height: 12.5%;
+  width: 12.5%;
+  position: absolute;
 }
 
-rect.square-light {
-  fill: #fce4b2;
+.square-dark {
+  background-color: #ce8919;
 }
 
-rect.square-selected {
-  fill: #8eca8e;
+.square-light {
+  background-color: #fce4b2;
+}
+
+.square-selected {
+  background-color: #8eca8e;
 }
 
 .piece {
@@ -70,52 +76,52 @@ rect.square-selected {
   background-image: url("/images/pieces/pdt45.svg")
 }
 
-.piece-rank-1 {
+.rank-1 {
   top:87.5%;
 }
-.piece-rank-2 {
+.rank-2 {
   top:75%;
 }
-.piece-rank-3 {
+.rank-3 {
   top:62.5%;
 }
-.piece-rank-4 {
+.rank-4 {
   top:50%;
 }
-.piece-rank-5 {
+.rank-5 {
   top:37.5%;
 }
-.piece-rank-6 {
+.rank-6 {
   top:25%;
 }
-.piece-rank-7 {
+.rank-7 {
   top:12.5%;
 }
-.piece-rank-8 {
+.rank-8 {
   top: 0;
 }
 
-.piece-file-a {
+.file-a {
   left: 0;
 }
-.piece-file-b {
+.file-b {
   left:12.5%;
 }
-.piece-file-c {
+.file-c {
   left:25%;
 }
-.piece-file-d {
+.file-d {
   left:37.5%;
 }
-.piece-file-e {
+.file-e {
   left:50%;
 }
-.piece-file-f {
+.file-f {
   left:62.5%;
 }
-.piece-file-g {
+.file-g {
   left:75%;
 }
-.piece-file-h {
+.file-h {
   left:87.5%;
 }
