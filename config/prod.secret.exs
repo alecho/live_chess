@@ -25,7 +25,15 @@ secret_key_base =
 
 config :live_chess, LiveChessWeb.Endpoint,
   http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
-  secret_key_base: secret_key_base
+  secret_key_base: secret_key_base,
+  server: true
+
+config :live_chess, LiveChessWeb.Endpoint,
+  url: [host: "${APP_NAME}.gigalixirapp.com", port: 443],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  load_from_system_env: true,
+  http: [port: {:system, "PORT"}],
+  secret_key_base: "${SECRET_KEY_BASE}"
 
 # ## Using releases (Elixir v1.9+)
 #
