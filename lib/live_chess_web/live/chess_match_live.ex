@@ -5,12 +5,15 @@ defmodule LiveChess.ChessMatchLive do
     Phoenix.View.render(LiveChessWeb.GameView, "match.html", assigns)
   end
 
-  def mount(_session, socket) do
-    {:ok, pid} = Chex.new_game()
-    game = Chex.state(pid)
-    socket = update_assigns_from_game(socket, game)
-    if connected?(socket), do: Chex.Server.subscribe(pid, self())
-    {:ok, assign(socket, pid: pid, selected_square: nil)}
+  def mount(%{game_pid: pid}, socket) do
+    if connected?(socket), do: Chex.Server.subscribe(pid)
+
+    socket =
+      socket
+      |> assign(pid: pid, selected_square: nil)
+      |> update_assigns_from_game(Chex.state(pid))
+
+    {:ok, socket}
   end
 
   def handle_event("square-clicked", %{"name" => n}, %{assigns: %{selected_square: n}} = socket) do
@@ -33,8 +36,13 @@ defmodule LiveChess.ChessMatchLive do
       game ->
         # Ask computer to move
         GenServer.cast(pid, :engine_move)
-        socket = assign_pieces(socket, game)
-        {:noreply, assign(socket, selected_square: nil)}
+
+        socket =
+          socket
+          |> assign(selected_square: nil)
+          |> update_assigns_from_game(game)
+
+        {:noreply, socket}
     end
   end
 
@@ -66,11 +74,25 @@ defmodule LiveChess.ChessMatchLive do
   end
 
   def assign_to_move(socket, game) do
-    assign(socket, to_move: Map.get(game, :active_color))
+    to_move =
+      game
+      |> Map.get(:active_color)
+      |> to_string()
+
+    assign(socket, to_move: to_move)
   end
 
   def assign_moves(socket, game) do
-    assign(socket, moves: Map.get(game, :moves))
+    moves =
+      game
+      |> Map.get(:moves)
+      |> Enum.reverse()
+      |> Enum.chunk_every(2, 2, [{{"", ""}, {"", ""}}])
+      |> Enum.map(fn [{{wff, wfr}, {wtf, wtr}}, {{bff, bfr}, {btf, btr}}] ->
+        ["#{wff}#{wfr}#{wtf}#{wtr}", "#{bff}#{bfr}#{btf}#{btr}"]
+      end)
+
+    assign(socket, moves: moves)
   end
 
   def assign_black_captures(socket, game) do

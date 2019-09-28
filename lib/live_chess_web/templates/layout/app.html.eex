@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>LiveChess · Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+
   </head>
   <body>
-    <main role="main" class="container">
+    <main role="main" class="container-fluid">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
