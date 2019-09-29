@@ -51,5 +51,8 @@ release :live_chess do
   set applications: [
     :runtime_tools
   ]
+  set overlays: [
+    {:copy, "bin", "bin"}
+  ]
 end
 
