@@ -7,9 +7,6 @@
 # General application configuration
 use Mix.Config
 
-config :live_chess,
-  ecto_repos: [LiveChess.Repo]
-
 # Configures the endpoint
 config :live_chess, LiveChessWeb.Endpoint,
   url: [host: "localhost"],
