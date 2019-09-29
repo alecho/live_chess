@@ -17,9 +17,9 @@ defmodule LiveChessWeb.Router do
   scope "/", LiveChessWeb do
     pipe_through :browser
 
-    get "/", MatchController, :index
-    get "/new", MatchController, :new
-    get "/play", MatchController, :play, as: :match_play
+    get "/", MatchController, :index, as: :match
+    get "/new", MatchController, :new, as: :match
+    get "/play", MatchController, :play, as: :match
   end
 
   # Other scopes may use custom stacks.
