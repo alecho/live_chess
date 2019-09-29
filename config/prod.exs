@@ -50,6 +50,8 @@ config :logger, level: :debug
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
 
+config :chex, engine_path: "/app/bin/stockfish"
+
 # Finally import the config/prod.secret.exs which loads secrets
 # and configuration from environment variables.
 import_config "prod.secret.exs"
