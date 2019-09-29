@@ -9,13 +9,16 @@ defmodule LiveChessWeb.MatchController do
     pid = get_session(conn, :game_pid)
     if !is_nil(pid) && Process.alive?(pid), do: Chex.end_game(pid)
 
-    {:ok, pid} = Chex.new_game()
+    case Chex.new_game() do
+      {:ok, pid} ->
+        conn
+          |> put_session(:game_pid, pid)
+          |> redirect(to: Routes.match_path(conn, :play))
 
-    conn =
-      conn
-      |> put_session(:game_pid, pid)
-
-    redirect(conn, to: Routes.match_path(conn, :play))
+      {:error, _error} ->
+        put_view(conn, PageView)
+        |> render("error.html", message: "Couldn't start a game")
+    end
   end
 
   def play(conn, _params) do
