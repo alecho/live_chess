@@ -9,6 +9,7 @@ defmodule LiveChessWeb.MatchController do
     if Process.alive?(pid), do: Chex.end_game(pid)
 
     {:ok, pid} = Chex.new_game()
+    GenServer.cast(pid, {:set_option, {"Minimum Thinking Time", 500}})
 
     conn =
       conn
