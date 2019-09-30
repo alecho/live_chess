@@ -6,9 +6,6 @@ defmodule LiveChessWeb.MatchController do
   end
 
   def new(conn, _params) do
-    pid = get_session(conn, :game_pid)
-    if !is_nil(pid) && Process.alive?(pid), do: Chex.end_game(pid)
-
     case Chex.new_game() do
       {:ok, pid} ->
         conn
