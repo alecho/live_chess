@@ -32,6 +32,20 @@
         <% end %>
       </div>
     </div>
+    <div class="row">
+      <div class="column column-50">
+        <h3>White Captures</h3>
+        <%= for {name, color, {file, rank}} <- @white_captures do %>
+          <div class="piece piece-captured piece-<%= "#{name}" %>-black"></div>
+        <% end %>
+      </div>
+      <div class="column column-50">
+        <h3>Black Captures</h3>
+        <%= for {name, color, {file, rank}} <- @black_captures do %>
+          <div class="piece piece-captured piece-<%= "#{name}" %>-white"></div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="column column-25">
     <h2><%= String.capitalize(assigns[:to_move]) %>'s turn.</h2>

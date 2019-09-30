@@ -120,7 +120,8 @@ defmodule LiveChess.ChessMatchLive do
     captures =
       game
       |> Map.get(:captures)
-      |> Enum.filter(fn {_name, color, _sq} -> color == :black end)
+      |> Enum.filter(fn {_name, color, _sq} -> color == :white end)
+      |> Enum.reverse()
 
     assign(socket, black_captures: captures)
   end
@@ -129,7 +130,8 @@ defmodule LiveChess.ChessMatchLive do
     captures =
       game
       |> Map.get(:captures)
-      |> Enum.filter(fn {_name, color, _sq} -> color == :white end)
+      |> Enum.filter(fn {_name, color, _sq} -> color == :black end)
+      |> Enum.reverse()
 
     assign(socket, white_captures: captures)
   end

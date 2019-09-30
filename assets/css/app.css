@@ -32,6 +32,13 @@
   transition: top ease-in-out 500ms, left ease-in-out 500ms;
 }
 
+.piece-captured {
+  height: 2em;
+  width: 2em;
+  position: relative;
+  display: inline-block;
+}
+
 .piece-king-white {
   background-image: url("/images/pieces/klt45.svg")
 }
