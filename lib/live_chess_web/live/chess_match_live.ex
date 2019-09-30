@@ -46,11 +46,32 @@ defmodule LiveChess.ChessMatchLive do
     end
   end
 
+  def handle_event("move-piece", %{"from" => sq, "to" => sq}, socket), do: {:noreply, socket}
+
+  def handle_event("move-piece", %{"from" => from, "to" => to}, %{assigns: %{pid: pid}} = socket) do
+    {:noreply, do_move(socket, pid, from, to)}
+  end
+
   def handle_info(%Chex.Game{} = game, socket) do
     {:noreply, update_assigns_from_game(socket, game)}
   end
 
-  def update_assigns_from_game(socket, game) do
+  defp do_move(socket, pid, from, to) do
+    case Chex.move(pid, from <> to) do
+      {:error, _reason} ->
+        assign(socket, selected_square: nil)
+
+      game ->
+        # Ask computer to move
+        GenServer.cast(pid, :engine_move)
+
+        socket
+        |> assign(selected_square: nil)
+        |> update_assigns_from_game(game)
+    end
+  end
+
+  defp update_assigns_from_game(socket, game) do
     socket
     |> assign_pieces(game)
     |> assign_to_move(game)
@@ -59,7 +80,7 @@ defmodule LiveChess.ChessMatchLive do
     |> assign_white_captures(game)
   end
 
-  def assign_pieces(socket, game) do
+  defp assign_pieces(socket, game) do
     p =
       game
       |> Map.get(:board)
@@ -73,7 +94,7 @@ defmodule LiveChess.ChessMatchLive do
     assign(socket, pieces: p)
   end
 
-  def assign_to_move(socket, game) do
+  defp assign_to_move(socket, game) do
     to_move =
       game
       |> Map.get(:active_color)
@@ -82,7 +103,7 @@ defmodule LiveChess.ChessMatchLive do
     assign(socket, to_move: to_move)
   end
 
-  def assign_moves(socket, game) do
+  defp assign_moves(socket, game) do
     moves =
       game
       |> Map.get(:moves)
@@ -95,7 +116,7 @@ defmodule LiveChess.ChessMatchLive do
     assign(socket, moves: moves)
   end
 
-  def assign_black_captures(socket, game) do
+  defp assign_black_captures(socket, game) do
     captures =
       game
       |> Map.get(:captures)
@@ -104,7 +125,7 @@ defmodule LiveChess.ChessMatchLive do
     assign(socket, black_captures: captures)
   end
 
-  def assign_white_captures(socket, game) do
+  defp assign_white_captures(socket, game) do
     captures =
       game
       |> Map.get(:captures)
