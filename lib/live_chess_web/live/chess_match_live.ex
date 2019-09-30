@@ -78,6 +78,7 @@ defmodule LiveChess.ChessMatchLive do
     |> assign_moves(game)
     |> assign_black_captures(game)
     |> assign_white_captures(game)
+    |> assign_fen(game)
   end
 
   defp assign_pieces(socket, game) do
@@ -135,4 +136,13 @@ defmodule LiveChess.ChessMatchLive do
 
     assign(socket, white_captures: captures)
   end
+
+  defp assign_fen(socket, game) do
+    fen =
+      game
+      |> Map.get(:fen)
+
+    assign(socket, fen: fen)
+  end
+
 end
