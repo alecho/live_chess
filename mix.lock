@@ -1,7 +1,7 @@
 %{
   "artificery": {:hex, :artificery, "0.4.2", "3ded6e29e13113af52811c72f414d1e88f711410cac1b619ab3a2666bbd7efd4", [:mix], [], "hexpm"},
   "assert_value": {:hex, :assert_value, "0.9.3", "5d146ecdcef004f48915d535a0233fdb7bdf657579e97eedca2d079e45e7d904", [:mix], [], "hexpm"},
-  "chex": {:hex, :chex, "0.1.1", "52c6e0399b50aef48c358d435a3341954d508caf2a35f3ef87dcfae3a01aa501", [:mix], [{:assert_value, "~> 0.9.3", [hex: :assert_value, repo: "hexpm", optional: false]}], "hexpm"},
+  "chex": {:hex, :chex, "0.1.2", "bb780500cd0f581b2bb58055caab047f4edb29cac5a47ba711c809ca74b320fe", [:mix], [{:assert_value, "~> 0.9.3", [hex: :assert_value, repo: "hexpm", optional: false]}], "hexpm"},
   "connection": {:hex, :connection, "1.0.4", "a1cae72211f0eef17705aaededacac3eb30e6625b04a6117c1b2db6ace7d5976", [:mix], [], "hexpm"},
   "cowboy": {:hex, :cowboy, "2.6.3", "99aa50e94e685557cad82e704457336a453d4abcb77839ad22dbe71f311fcc06", [:rebar3], [{:cowlib, "~> 2.7.3", [hex: :cowlib, repo: "hexpm", optional: false]}, {:ranch, "~> 1.7.1", [hex: :ranch, repo: "hexpm", optional: false]}], "hexpm"},
   "cowlib": {:hex, :cowlib, "2.7.3", "a7ffcd0917e6d50b4d5fb28e9e2085a0ceb3c97dea310505f7460ff5ed764ce9", [:rebar3], [], "hexpm"},
