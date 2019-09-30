@@ -12,7 +12,7 @@ config :live_chess, LiveChessWeb.Endpoint,
   server: true
 
 config :live_chess, LiveChessWeb.Endpoint,
-  url: [host: "${APP_NAME}.gigalixirapp.com", port: 443],
+  url: [host: "chess.alecho.com", port: 443],
   cache_static_manifest: "priv/static/cache_manifest.json",
   load_from_system_env: true,
   http: [port: {:system, "PORT"}],
