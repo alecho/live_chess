@@ -15,7 +15,7 @@ To start your Phoenix server:
   * Configure [Chex](https://github.com/alecho/chex) to point to your Stockfish binary
   * Start Phoenix endpoint with `mix phx.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser!
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
