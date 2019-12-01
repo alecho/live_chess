@@ -10,7 +10,12 @@ defmodule LiveChess.ChessMatchLive do
 
     socket =
       socket
-      |> assign(pid: pid, selected_square: nil)
+      |> assign(
+        pid: pid,
+        selected_square: nil,
+        files: Chex.Board.files(),
+        ranks: 1..8
+      )
       |> update_assigns_from_game(Chex.state(pid))
 
     {:ok, socket}
